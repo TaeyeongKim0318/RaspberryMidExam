@@ -48,6 +48,14 @@
       uport="22"$uip3d && echo $uport
       upnpc -d $uport TCP || true
       upnpc -a $uip 22 $uport TCP || true
+      # for WEB
+      uport="28"$uip3d && echo $uport
+      upnpc -d $uport TCP || true
+      upnpc -a $uip 80 $uport TCP || true
+      # for VNC
+      uport="29"$uip3d && echo $uport
+      upnpc -d $uport TCP || true
+      upnpc -a $uip 5900 $uport TCP || true
       ```
       ```
       sleep 10
@@ -108,11 +116,29 @@
    5. iot 디렉토리를 웹 서버와 연결하기
    - `sudo ln -sfT ~pi/iot var/www/iot`
 2. HTML, CSS, JS를 활용한 간단한 html 페이지 구성 방법은 ?
+   - ??????????????????????
 3. 웹페이지(HTML, CSS, JS) 오류 추적 방법은 ?
+   - 웹페이지를 크롬으로 연다.
+   - `F12`키를 눌러 확인한다.
 4. PHP 응용프록그램 서버 설치 방법은 ?
+   - `sudo apt-get-y install php libapache2-mod-php`
 5. RESTful 서비스를 만들고 연결하는 방법은 ?
+   - Ajax 방식으로 하면 된다.
 6. 웹서버 오류 추적 방법은 ?
+   - `tail -f /var/log/apache2/error.log`
 7. 라즈베리파이에서 git 명령어 사용법을 알고 있는가 ?(clone, add, commit, status, push, pull)
+   - clone
+     - `git clone <GitHub Repository URL>`
+   - add
+     - `git add * `
+   - commit
+     - `git commit -m '입력할 메세지'`
+   - status
+     - `git status`
+   - push
+     - `git push origin main`
+   - pull
+     - `git pull`
 
 ### 4주차
 1. 파이썬 프로그램의 버전은?
