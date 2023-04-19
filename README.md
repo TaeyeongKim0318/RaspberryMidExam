@@ -239,6 +239,8 @@ Python 3.9.2
 
 **5. PDO와 SQLIite의 SELECT문장 사용의 차이점은 무엇인가?**
    - SQLite를 사용하면 매개 변수를 바인딩 해줄 수 없지만 PDO를 사용하면 매개변수를 바인딩 해줄 수 있어 쿼리문을 좀더 유연하게 사용할 수 있다.
+<br>
+<br>
 
 ## 6주차
 **1. PDO는 무엇인가?**
@@ -304,7 +306,8 @@ Python 3.9.2
    ```
 <br>
 
-**3. tail -f error.log 보는 방법**
+**3. tail -f error.log 보는 방법<br>**
+`tail -f /var/log/apache2/error.log`
 
 <br>
 
