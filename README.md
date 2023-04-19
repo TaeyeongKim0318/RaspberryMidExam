@@ -172,7 +172,7 @@ Python 3.9.2
    1. dictionary를 출력 또는 파일에 저장 가능한 문자열로 변환<br>
    `json.dumps(<데이터>)`
    - 예시
-    ```python
+   ```python
    import json
    s = []
    s = json.dumps({"Peter":35,  "Ben":37,  "Joe":43})
