@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+  <title>"SQLite PDO"</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  날짜 <input id='dateis' type="text" style="width: 5em;" value=0 >
+  시작위치 <input id='jumpto' type="number" style="width: 5em;" value=0 >
+  갯수<input id='count' type="number" style="width: 3em;" value=10 >
+  <input type="button" value="목록조회" onclick="retrieve();">
+  <div id="result" style="color:red"></div>
+  <pre id="log" style="color:blue"></pre>
+  <script>
+  var API_php="sht_pdo.php"
+  var _=function(id) {
+    return document.getElementById(id)
+  }
+  
+  Date.prototype.yyyymmdd = function() {
+    var mm = this.getMonth() + 1 //getMonth() is zero-based
+    var dd = this.getDate();
+    return [this.getFullYear(),
+            (mm>9 ? '' : '0') + mm,
+            (dd>9 ? '' : '0') + dd
+          ].join('');
+  };
+  var date = new Date();
+  _('dateis').value=date.yyyymmdd()
+    
+  var retrieve = function() {
+    var data = new FormData();
+    data.append('func', 'select');
+    data.append('jumpto', _('jumpto').value);
+    data.append('count', _('count').value);
+    data.append('date', _('dateis').value);
+    var request=new XMLHttpRequest();
+    request.onreadystatechange = function() {
+      if(request.readyState == 4) {
+        var resp
+        try {
+          resp = JSON.parse(request.response);
+        } catch (e) {
+          resp = request.response + 'error:Unknownerroroccurred'
+        }
+        list = ""
+        for(i = 0; i<resp.length; i++) {
+          list += "<div>"+resp[i]['time'] + ", "
+            +resp[i]['addr']+", "
+            +resp[i].temp + ", " + resp[i].humi
+            +"<input type='button' value='delete' id='" +resp[i]['time'] + "'onclick='data_delete(this.id);' > \n"
+            +"</div> \n"
+          }
+          _('result').innerHTML = list + "Count:"+resp.length
+        }
+      };
+      request.open('POST', API_php);
+      request.send(data);
+    }
+    
+    var data_delete = function (id) {
+      var data=new FormData();
+      data.append('func', 'delete');
+      data.append('time', id);
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = function() { 
+        if(request.readyState == 4) {
+          var resp
+          try{
+            resp = JSON.parse(request.response);
+          }catch(e){
+            resp = request.response + 'error:Unknown error occurred'
+          }
+          _('result').innerHTML = "Count :" + JSON.stringify(resp)
+        }
+      };
+      request.open('POST',API_php);
+      request.send(data);
+    }
+  </script>
+</body>
+</html>

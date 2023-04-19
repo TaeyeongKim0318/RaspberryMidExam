@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+  <title>"restful"</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div>
+    Name: <input id="name" type = "text">
+    Age: <input id="age" type = "text">
+    <input type="button" value="등록" onclick="create();">
+  </div>
+  <div id="result" style="color:red"></div>
+  <script>
+    var create = function () {
+      var data = new FormData();
+      data.append('func', 'create');
+      data.append('name', document.getElementById('name').value);
+      data.append('age', document.getElementById('age').value);
+      var request = new XMLHttpRequest();
+
+      request.onreadystatechange = function() {
+        if(request.readyState == 4) {
+          var resp
+          try {
+            resp = JSON.parse(request.response);
+          } catch (e) {
+            resp = 'error:Unknown error occurred'
+          }
+            console.log(resp.name + ':' + resp.age);
+            document.getElementById('result').innerHTML 
+            = "Welcome "+resp.name+"<br> \n"+"You are "+resp.age + " years old."
+        }
+      };
+      request.open('POST', "name.php" );
+      request.send(data);
+    }
+  </script>
+</body>
+</html>
