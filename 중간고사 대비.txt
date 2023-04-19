@@ -1,0 +1,19 @@
+upnpc를 사용한 포트포워딩
+
+포트포워딩
+
+upnpc 자동 설정
+chmod a+x ~pi/bin/autoupnp.sh
+crontab -e
+
+tail -f error.log 보는 방법
+
+ajax 방식 통신
+
+SQlite 설치, 테이블 만들기
+
+PHP에서 Update/Insert/Delete 사용방법 2가지
+PDO 방법, execute 방법(?)
+execute 방법(?)은 건바이 건으로 commit 해서 rollback이 어려움
+PDO 방법은 한번에 commit해서 rollback이 쉬움
+PDO에서 데이터를 연결하는 방법들(3가지)
