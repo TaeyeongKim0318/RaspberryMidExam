@@ -1,13 +1,13 @@
 # RaspberryMidExam
 ## 2주차
-1. 라즈베리파이 OS Lite 버전을 설치할 수 있는가?
+**1. 라즈베리파이 OS Lite 버전을 설치할 수 있는가?**
    1. Micro SD 카드를 PC에 연결한다.
    2. Raspberry Pi Imager를 다운로드 후 설치한다.
       - 운영체제를 Raspberry Pi OS Lite (32-bit)를 선택 후 
    3. Micro SD 카드를 라즈베리파이 연결
 <br>
 
-2. 라즈베리파이 환경을 설정할 수 있는가?<br>
+**2. 라즈베리파이 환경을 설정할 수 있는가?<br>**
 `sudo raspi-config` 에서 아래 4가지 설정
    1. 사용자 명, password 설정
    2. 무선 네트워크 설정
@@ -17,8 +17,8 @@
    - `sudo apt-get update`, `sudo apt-get upgrade`
 <br> 
 
-3. 포트포워딩으로 외부 접속 가능한가?
-   1. upnpc를 사용한 ssh(22) 포트 접속 환경 구성
+**3. 포트포워딩으로 외부 접속 가능한가?**
+   - **upnpc를 사용한 ssh(22) 포트 접속 환경 구성**
       1. upnp 클라이언트 모듈을 설치
       - `sudo apt -y install miniupnpc`
       2. 라즈베리파이 ip 확인<br>
@@ -36,7 +36,7 @@
       ```
       upnpc -d 22102 TCP
       ```
-   2. 여러 사람이 함께 사용하기 위한 UPNP지정
+   - **여러 사람이 함께 사용하기 위한 UPNP지정**
       1. bin 폴더 생성 후 쉘을 실행할 수 있도록 폴더 접근 권한 지정<br>
       `mkdir ~pi/bin`, `chmod 775 ~pi/bin`
       2. 포트포워딩을 적용할 쉘 스크립트 편집
@@ -69,13 +69,13 @@
       - `uport="22"$(printf "%03d" $(echo $uip | cut -d "." -f4))`
 <br>
 
-4. Github 저장소를 RPi와 연동할 수 있는가?<br>
+**4. Github 저장소를 RPi와 연동할 수 있는가?<br>**
 가능하지만 보안 방식 변경으로 토큰을 발급해야 된다.
-   1. token 발급 순서
+   - **token 발급 순서**
       1. Setting -> Developer settings -> tokens -> Generate new token
       2. 원하는 옵션과 note 입력 후 생성
       3. 코드 복사하여 clone 시 password 대신 사용
-   2. RPI와 GitHub 연동
+   - **RPI와 GitHub 연동**
       1. git 패키지를 설치한다.
       - `sudo apt-get install git`
       2. git hub에 생성된 repository를 clone한다.
@@ -88,7 +88,7 @@
       - `git push origin main`
 <br>
 
-5. 부팅시 쉘을 자동실행할 수 있는가?
+**5. 부팅시 쉘을 자동실행할 수 있는가?**
    1. Shell 파일의 실행 권한 지정
    - `chmod a+x <실행 파일 경로>`
    ```
@@ -103,8 +103,8 @@
 <br>
 
 
-### 3주차
-1. 아파치 웹서버 설치 방법은 ?
+## 3주차
+**1. 아파치 웹서버 설치 방법은?**
    1. 아파치 서버 패키지 설치
    - `sudo apt-get install apache2`
    2. 웹 서버 루트 디렉토리를 변경
@@ -120,19 +120,19 @@
    - `sudo ln -sfT ~pi/iot var/www/iot`
 <br>
 
-2. HTML, CSS, JS를 활용한 간단한 html 페이지 구성 방법은 ?
+**2. HTML, CSS, JS를 활용한 간단한 html 페이지 구성 방법은?**
    - ??????????????????????
 <br>
 
-3. 웹페이지(HTML, CSS, JS) 오류 추적 방법은 ?
+**3. 웹페이지(HTML, CSS, JS) 오류 추적 방법은?**
    - 라즈베리파이 웹페이지에서 마우스 우클릭 후 inspect 선택하여 개발자 화면의 console에서 확인한다.
 <br>
 
-4. PHP 응용프록그램 서버 설치 방법은 ?
+**4. PHP 응용프로그램 서버 설치 방법은?**
    - `sudo apt-get-y install php libapache2-mod-php`
 <br>
 
-5. RESTful 서비스를 만들고 연결하는 방법은 ?
+**5. RESTful 서비스를 만들고 연결하는 방법은 ?**
    - name.php 참고
 <br>
 
@@ -156,7 +156,7 @@
 <br>
 <br>
 
-### 4주차
+## 4주차
 1. 파이썬 프로그램의 버전은?
    - Python 3.9.2
 <br>
@@ -195,7 +195,7 @@
    - week 4 폴더 확인
 
 
-### 5주차
+## 5주차
 1. SQLite는 무엇인가?
    - SQLite는 RDB를 라이브러리다.
    - SQL을 이용하여 데이터 입출력이 가능하다.
@@ -230,7 +230,7 @@
 4. SQLite의 사용자는 어떻게 지정하는가?
 5. PDO와 SQLIite의 SELECT문장 사용의 차이점은 무엇인가?
 
-### 6주차
+## 6주차
 1. PDO는 무엇인가?
    - RDB의 표준화 된 데이터 처리 방법이다.
    - 대부분의 RDB에 적용 가능하여 코드 수정없이 다른 RDB로 변경 가능하다.
@@ -247,7 +247,7 @@
    - 반복 재사용을 위해서
 <br>
 
-### 중간고사 출제 예상 쪽집게
+## 중간고사 출제 예상 쪽집게
 1. upnpc를 사용한 ssh 접속 설정
    1. upnp 클라이언트 모듈을 설치
    - `sudo apt -y install miniupnpc`
