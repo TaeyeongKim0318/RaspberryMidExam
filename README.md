@@ -169,9 +169,30 @@
 <br>
    
 3. 파이썬에서 파일로 데이터를 저장하는 방법은?
-   - 
+   1. dictionary를 출력 또는 파일에 저장 가능한 문자열로 변환
+   - `json.dumps(<데이터>)`
+    ```python
+   import json
+   s=[]
+   s = json.dumps({"Peter":35,  "Ben":37,  "Joe":43})
+   ```
+   - 결과
+   ```
+   string'{"Peter":35,  "Ben":37,  "Joe":43}' => s
+   ```
+   2. 문자열 json 자료를 python dictinary로 변환
+   - `json.loads('<문자열>', true)`
+
+   ```python
+   j = json.loads('{"Peter":35,  "Ben":37,  "Joe":43}',true)
+   ```
+   - 결과
+   ```
+   {"Peter":35,  "Ben":37,  "Joe":43} => j
+   ```
+
 4. 파이썬 저장 데이터를 웹화면에서 확인하는 방법은?
-   - 
+   - week 4 폴더 확인
 
 
 ### 5주차
@@ -280,21 +301,84 @@
 <br>
 
 5. SQlite 설치, 테이블 만들기
+   1. SQLite 설치
+   - `sudo apt-get install sqlite3`
+   2. DB 파일 생성
+   - `sqlite3 <파일명.db>`
+   ```
+   sqlite3 ~/ex.db
+   ```
+   3. 테이블 생성
+   - `CREATE TABLE <테이블 명>(컬럼명1 타입1, 컬럼명2 타입2, ...)`
+   ```
+   CREATE TABLE ta_iot(time NUMBER, addr TEXT, temp FLOAT, humi FLOAT);
+   ```
+<br>
 
 6. PHP에서 Update/Insert/Delete 사용방법 2가지
-7. PDO 방법, execute 방법(?)
+PDO 방법, execute 방법(?)
 execute 방법(?)은 건바이 건으로 commit 해서 rollback이 어려움
 PDO 방법은 한번에 commit해서 rollback이 쉬움
 PDO에서 데이터를 연결하는 방법들(3가지)
 
 
-JSON변환PHP코드
-$s=json_encode(array("Peter"=>35,"Ben"=>37,"Joe"=>43))  string'{"Peter":35,  "Ben":37,  "Joe":43}'=>$s  *array배열을출력또는파일에저장가능한문자열로변환  $j=json_decode('{"Peter":35,  "Ben":37,  "Joe":43}',true)  array("Peter"=>35,"Ben"=>37,"Joe"=>43)=>$j  *문자열json자료를phparray로만듦  $j["Peter"]==35
+JSON 변환 PHP코드
+```PHP
+$s = json_encode(array("Peter"=>35, "Ben"=>37, "Joe"=>43))
+```
+```
+string'{"Peter":35,  "Ben":37,  "Joe":43}'=>$s 
+```
+*array 배열을 출력 또는 파일에 저장 가능한 문자열로 변환
+```PHP
+$j = json_decode('{"Peter":35, "Ben":37, "Joe":43}',true)
+```
+```
+array("Peter"=>35, "Ben"=>37, "Joe"=>43) => $j
+```
+*문자열 json 자료를 php array로 만듦 
+$j["Peter"] == 35
 
-JSON변환JS코드  s=JSON.stringify({"Peter":35,  "Ben":37,  "Joe":43})  string'{"Peter":35,  "Ben":37,  "Joe":43}'=>s  *array배열을출력또는파일에저장가능한문자열로변환  j=JSON.parse('{"Peter":35,  "Ben":37,  "Joe":43}',true)  object("Peter"=>35,"Ben"=>37,"Joe"=>43)=>j  *문자열json자료를jsobject로만듦  j["Peter"]==j.Peter==35
+JSON 변환 JS코드
+```javascript
+s = JSON.stringify({"Peter":35,  "Ben":37,  "Joe":43})
+```
+```
+string'{"Peter":35, "Ben":37, "Joe":43}' => s
+```
+*array 배열을 출력 또는 파일에 저장 가능한 문자열로 변환
 
-JSON변환Python코드
-importjson  s=[]  s=json.dumps({"Peter":35,  "Ben":37,  "Joe":43})  string'{"Peter":35,  "Ben":37,  "Joe":43}'=>s  *dictionary를출력또는파일에저장가능한문자열로변환  j=json.loads('{"Peter":35,  "Ben":37,  "Joe":43}',true)  {"Peter":35,  "Ben":37,  "Joe":43}=>j  *문자열json자료를pythondictinalry로만듦  j["Peter"]==35#비교  j["Sam"]=15#추가
+```javascript
+j = JSON.parse('{"Peter":35, "Ben":37, "Joe":43}',true)
+```
+```
+object("Peter"=>35, "Ben"=>37, "Joe"=>43) => j
+```
+*문자열 json 자료를 js object로 만듦
+j["Peter"]==j.Peter==35
+
+JSON 변환 Python 코드
+```python
+import json
+s=[]
+s = json.dumps({"Peter":35,  "Ben":37,  "Joe":43})
+```
+```
+string'{"Peter":35,  "Ben":37,  "Joe":43}' => s
+```
+*dictionary를 출력 또는 파일에 저장 가능한 문자열로 변환
+
+```python
+j = json.loads('{"Peter":35,  "Ben":37,  "Joe":43}',true)
+```
+```
+{"Peter":35,  "Ben":37,  "Joe":43} => j
+```
+*문자열 json 자료를 python dictinalry로 만듦
+
+j["Peter"] ==35 #비교
+j["Sam"] = 15 #추가
+
 
 
 wget localhost - O - 어쩌구 저쩌구

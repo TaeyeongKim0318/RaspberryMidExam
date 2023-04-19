@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+  <title>"SHT31"</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <input type = "button" value="목록조회" onclick="filelist();">
+  <div id="result" style="color:red"></div>
+  <pre id="log" style="color:blue"></pre>
+  <script>
+  var filelist = function () {
+    var data = new FormData();
+    data.append('func', 'filelist');
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+      if(request.readyState == 4) {
+        var resp
+        try {
+          resp = JSON.parse(request.response);
+        } catch (e) {
+          resp = 'error:Unknown error occurred'
+        }
+        list = ""
+        for(i = 0; i<resp.length; i++) {
+          list += "<a href='" + resp[i] + "'>" + resp[i] + "</a>"
+          + "<input type='button' id='" + resp[i] + "'"
+          + "value='보기'"
+          + "onclick='viewcsv(this.id);'>"
+          + "<br>"
+        }
+        document.getElementById('result').innerHTML = list + "Count :"+ resp.length
+      }
+    };
+    request.open('POST', "sht.php" );
+    request.send(data);
+  }
+
+  var viewcsv = function (csvfile) {
+    var data = new FormData();
+    data.append('func', 'viewcsv');
+    data.append('csvfile', csvfile);
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+      if(request.readyState == 4) {
+        var resp
+        try {
+          resp = JSON.parse(request.response);
+        } catch (e) {
+          resp = 'error:Unknown error occurred'
+        }
+        document.getElementById('log').innerHTML = resp
+      }
+    };
+    request.open('POST', "sht.php" );
+    request.send(data);
+  } 
+  </script>
+</body>
+</html>
