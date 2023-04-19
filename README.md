@@ -402,6 +402,7 @@ j = json.loads('{"Peter":35,  "Ben":37,  "Joe":43}',true)
 ```
 `j["Peter"] ==35 #비교`<br>
 `j["Sam"] = 15 #추가`
+<br>
 
 **4. wget 명령어<br>**
 `wget <url> -O - 2 /dev/null | cat -`
@@ -409,5 +410,11 @@ j = json.loads('{"Peter":35,  "Ben":37,  "Joe":43}',true)
 wget --post-data="func=create&name=sam&age=25" \
  http://localhost/iot/name.php -O - 2> /dev/null | cat -
 ```
+<br>
 
-5. sqlite3의 장단점에 대해 적으시오
+**5. sqlite3의 장단점에 대해 적으시오<br>**
+| SQLite | 장점 |단점 |
+| :--: | :-- | :-- |
+|#1| 라이센스 문제에서 자유롭다. | 많은 데이터를 처리하는데 적합하지 않다. |
+|#2| 사용하는 저장공간이 매우 적다. | 서버가 없어 직접 네트워크 엑세스가 불가능하다. |
+|#3| 데이터가 단일 파일로 저장된다.| 다른 DB에 비해 보안에 취약하다. |
