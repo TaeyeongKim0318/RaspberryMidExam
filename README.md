@@ -108,18 +108,20 @@
    1. 아파치 서버 패키지 설치
    - `sudo apt-get install apache2`
    2. 웹 서버 루트 디렉토리를 변경
-   - `sudo mousepad /etc/apache2/sites-enabled/000-default.conf`
+      1. 웹서버의 DocumentRoot를 편집기로 열기
+      - `sudo nano /etc/apache2/sites-enabled/000-default.conf`
+      2. DocumentRoot를 수정
+      - `DocumentRoot /var/www/html` -> `DocumentRoot /var/www`
    3. 웹 서버 사용자 권한 확장
    - `sudo usermod -a -G www-data pi`, `sudo usermod -a -G pi www-data`
-   4. 홈에 iot 디렉토리 추가
+   1. 홈에 iot 디렉토리 추가
    - `mkdir ~pi/iot/`
-   5. iot 디렉토리를 웹 서버와 연결하기
+   1. iot 디렉토리를 웹 서버와 연결하기
    - `sudo ln -sfT ~pi/iot var/www/iot`
 2. HTML, CSS, JS를 활용한 간단한 html 페이지 구성 방법은 ?
    - ??????????????????????
 3. 웹페이지(HTML, CSS, JS) 오류 추적 방법은 ?
-   - 웹페이지를 크롬으로 연다.
-   - `F12`키를 눌러 확인한다.
+   - 라즈베리파이 웹페이지에서 마우스 우클릭 후 inspect 선택하여 개발자 화면의 console에서 확인한다.
 4. PHP 응용프록그램 서버 설치 방법은 ?
    - `sudo apt-get-y install php libapache2-mod-php`
 5. RESTful 서비스를 만들고 연결하는 방법은 ?
@@ -142,6 +144,7 @@
 
 ### 4주차
 1. 파이썬 프로그램의 버전은?
+   - Python 3.9.2 
 2. 센서에 필요한 파이썬 라이브러리를 설치하는 방법은?
 3. 파이썬에서 파일로 데이터를 저장하는 방법은?
 4. 파이썬 저장 데이터를 웹화면에서 확인하는 방법은?
