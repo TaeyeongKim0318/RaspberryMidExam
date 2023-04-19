@@ -88,6 +88,9 @@
    ```
    2. crontab에 추가
    - `crontab -e`
+   ```
+   @reboot ~pi/bin/autoupnp.sh
+   ```
 <br>
 <br>
 
