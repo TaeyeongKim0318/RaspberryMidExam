@@ -61,7 +61,7 @@
       - `uport="22"$(printf "%03d" $(echo $uip | cut -d "." -f4))`
 <br>
 
-1. Github 저장소를 RPi와 연동할 수 있는가?<br>
+4. Github 저장소를 RPi와 연동할 수 있는가?<br>
 가능하지만 보안 방식 변경으로 토큰을 발급해야 된다.
    1. token 발급 순서
       1. Setting -> Developer settings -> tokens -> Generate new token
@@ -80,7 +80,7 @@
       - `git push origin main`
 <br>
 
-2. 부팅시 쉘을 자동실행할 수 있는가?
+5. 부팅시 쉘을 자동실행할 수 있는가?
    1. Shell 파일의 실행 권한 지정
    - `chmod a+x <실행 파일 경로>`
    ```
