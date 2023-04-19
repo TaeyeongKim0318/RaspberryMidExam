@@ -16,21 +16,22 @@
    5. 소프트웨어 업데이트<br>
    - `sudo apt-get update`, `sudo apt-get upgrade`
 <br> 
+
 3. 포트포워딩으로 외부 접속 가능한가?
    1. upnpc를 사용한 ssh(22) 포트 접속 환경 구성
       1. upnp 클라이언트 모듈을 설치
       - `sudo apt -y install miniupnpc`
-      1. 라즈베리파이 ip 확인<br>
+      2. 라즈베리파이 ip 확인<br>
       - `hostname -I` or `ifconfig`
-      1. upnpc로 라즈베리파이 IP의 22 포트를 공유기 포트로 접속할 수 있도록 설정<br>
+      3. upnpc로 라즈베리파이 IP의 22 포트를 공유기 포트로 접속할 수 있도록 설정<br>
       - `upnpc -a <raspi IP add> <raspi ssh port> <공유기 포워딩 포트> <통신 방식>`<br>
       - ssh : 22, HTTP : 80, VNC : 5900
       ```
       upnpc -a 192.168.219.200 22 22102 TCP
       ```
-      1. 포트 등록 사항 확인
+      4. 포트 등록 사항 확인
       - `upnpc -l`
-      1. 포트 삭제하기<br>
+      5. 포트 삭제하기<br>
       - `upnpc -d <포워딩된 포트> <통신 방식>`
       ```
       upnpc -d 22102 TCP
