@@ -6,7 +6,6 @@
       - 운영체제를 Raspberry Pi OS Lite (32-bit)를 선택 후 
    3. Micro SD 카드를 라즈베리파이 연결
 <br>
-<br>
 
 2. 라즈베리파이 환경을 설정할 수 있는가?<br>
 `sudo raspi-config` 에서 아래 4가지 설정
@@ -16,10 +15,7 @@
    4. ssh 설정
    5. 소프트웨어 업데이트<br>
    - `sudo apt-get update`, `sudo apt-get upgrade`
-<br>
-<br>
-
- 
+<br> 
 3. 포트포워딩으로 외부 접속 가능한가?
    1. upnpc를 사용한 ssh(22) 포트 접속 환경 구성
       1. upnp 클라이언트 모듈을 설치
@@ -63,36 +59,34 @@
       uport 설정을 아래와 같이 할 수도 있다.<br>
       - `uport="22"$(printf "%03d" $(echo $uip | cut -d "." -f4))`
 <br>
+
+1. Github 저장소를 RPi와 연동할 수 있는가?<br>
+가능하지만 보안 방식 변경으로 토큰을 발급해야 된다.
+   1. token 발급 순서
+      1. Setting -> Developer settings -> tokens -> Generate new token
+      2. 원하는 옵션과 note 입력 후 생성
+      3. 코드 복사하여 clone 시 password 대신 사용
+   2. RPI와 GitHub 연동
+      1. git 패키지를 설치한다.
+      - `sudo apt-get install git`
+      2. git hub에 생성된 repository를 clone한다.
+      - `git clone <git hub repository URL>`
+      3. 파일 수정 후 Staging area에 추가한다.
+      - `git add *`
+      4. staged 된 파일을 commit한다.
+      - `git commit -m '<Enter Message>'`
+      5. git hub에 push 한다.
+      - `git push origin main`
 <br>
 
-   1. Github 저장소를 RPi와 연동할 수 있는가?<br>
-   가능하지만 보안 방식 변경으로 토큰을 발급해야 된다.
-      1. token 발급 순서
-         1. Setting -> Developer settings -> tokens -> Generate new token
-         2. 원하는 옵션과 note 입력 후 생성
-         3. 코드 복사하여 clone 시 password 대신 사용
-      2. RPI와 GitHub 연동
-         1. git 패키지를 설치한다.
-         - `sudo apt-get install git`
-         2. git hub에 생성된 repository를 clone한다.
-         - `git clone <git hub repository URL>`
-         3. 파일 수정 후 Staging area에 추가한다.
-         - `git add *`
-         4. staged 된 파일을 commit한다.
-         - `git commit -m '<Enter Message>'`
-         5. git hub에 push 한다.
-         - `git push origin main`
-<br>
-<br>  
-
-   2. 부팅시 쉘을 자동실행할 수 있는가?
-      1. Shell 파일의 실행 권한 지정
-      - `chmod a+x <실행 파일 경로>`
-      ```
-      chmod a+x ~pi/bin/autoupnp.sh
-      ```
-      2. crontab에 추가
-      - `crontab -e`
+2. 부팅시 쉘을 자동실행할 수 있는가?
+   1. Shell 파일의 실행 권한 지정
+   - `chmod a+x <실행 파일 경로>`
+   ```
+   chmod a+x ~pi/bin/autoupnp.sh
+   ```
+   2. crontab에 추가
+   - `crontab -e`
 <br>
 <br>
 
